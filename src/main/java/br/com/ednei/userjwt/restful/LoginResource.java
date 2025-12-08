@@ -3,6 +3,7 @@ package br.com.ednei.userjwt.restful;
 import br.com.ednei.userjwt.dto.AuthenticationRequest;
 import br.com.ednei.userjwt.dto.AuthenticationResponse;
 import br.com.ednei.userjwt.service.LoginService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,7 @@ public class LoginResource {
     }
 
     @PostMapping("/login")
-    private ResponseEntity<AuthenticationResponse> login(@RequestBody AuthenticationRequest authenticationRequest) {
+    private ResponseEntity<AuthenticationResponse> login(@Valid @RequestBody AuthenticationRequest authenticationRequest) {
         return ResponseEntity.ok(loginService.authenticate(authenticationRequest));
     }
 
