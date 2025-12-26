@@ -30,7 +30,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<?> handleException(RuntimeException e) {
         log.error(e.getMessage());
-        return ResponseEntity.internalServerError().body("Erro interno de execuação");
+        return ResponseEntity.internalServerError().body("Erro interno de execução");
     }
 
     @ExceptionHandler(IllegalArgumentException.class)

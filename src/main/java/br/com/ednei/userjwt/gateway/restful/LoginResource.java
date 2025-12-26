@@ -1,4 +1,4 @@
-package br.com.ednei.userjwt.restful;
+package br.com.ednei.userjwt.gateway.restful;
 
 import br.com.ednei.userjwt.dto.AuthenticationRequest;
 import br.com.ednei.userjwt.dto.AuthenticationResponse;

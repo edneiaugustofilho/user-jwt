@@ -1,16 +1,19 @@
 package br.com.ednei.userjwt.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
-@Getter
-@Setter
+@EqualsAndHashCode(callSuper = true)
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity(name = "User")
 @Table(name = "tb_users")
 public class User extends AuditableEntity implements UserDetails {
@@ -34,6 +37,12 @@ public class User extends AuditableEntity implements UserDetails {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "tb_user_tenant",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "tenant_id"))
+    private List<Tenant> tenants;
+
     public User(UUID id, String name, String email, String password, String verificationCode, boolean enabled) {
         this.setId(id);
         this.name = name;
@@ -48,9 +57,6 @@ public class User extends AuditableEntity implements UserDetails {
         this.email = email;
         this.password = password;
         this.role = role;
-    }
-
-    public User() {
     }
 
     @Override

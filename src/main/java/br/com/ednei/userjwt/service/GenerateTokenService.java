@@ -27,6 +27,7 @@ public class GenerateTokenService {
                     .withIssuer("auth")
                     .withSubject(user.getEmail())
                     .withClaim("roles", List.of(user.getRole().name()))
+                    .withClaim("id", user.getId().toString())
                     .withExpiresAt(ExpirationDate())
                     .sign(algorithm);
         } catch (JWTCreationException exception) {

@@ -71,4 +71,8 @@ public class UserService {
     public User findById(UUID id) {
         return userRepository.findById(id).orElse(null);
     }
+
+    public boolean existsByid(UUID userId) {
+        return userRepository.existsById(userId);
+    }
 }

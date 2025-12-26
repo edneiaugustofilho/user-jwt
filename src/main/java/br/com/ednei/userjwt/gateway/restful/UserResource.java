@@ -1,4 +1,4 @@
-package br.com.ednei.userjwt.restful;
+package br.com.ednei.userjwt.gateway.restful;
 
 import br.com.ednei.userjwt.dto.UserRequest;
 import br.com.ednei.userjwt.dto.UserResponse;
@@ -23,8 +23,8 @@ public class UserResource {
         this.userVerifyService = userVerifyService;
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<UserResponse> findById(@PathVariable UUID id) {
+    @GetMapping
+    public ResponseEntity<UserResponse> findById(@RequestParam("id") UUID id) {
         User user = userService.findById(id);
         if (Objects.nonNull(user)) {
             return ResponseEntity.ok(UserResponse.fromEntity(user));
