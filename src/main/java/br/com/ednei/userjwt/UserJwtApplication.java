@@ -22,7 +22,10 @@ public class UserJwtApplication {
     @Value("${spring.profiles.active}")
     private String activeProfile;
 
-    public static void main(String[] args) {
+    @Value("${jwt.secret}")
+    private String jwtSecret;
+
+    static void main(String[] args) {
         SpringApplication.run(UserJwtApplication.class, args);
     }
 
@@ -45,6 +48,8 @@ public class UserJwtApplication {
                         ":: " + labelPoweredBy + " " + formatarPoweredBy + " ::\n";
 
         System.out.printf((banner) + "%n", applicationName, versao, activeProfile, companyName);
+
+        System.out.printf("JWT Secret: %s%n", jwtSecret);
     }
 
 }
