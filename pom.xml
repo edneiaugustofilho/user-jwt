@@ -11,7 +11,7 @@
     <groupId>br.com.ednei</groupId>
     <artifactId>user-jwt</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>user-jwt</name>
     <description>user-jwt</description>
     <url/>
