@@ -31,6 +31,7 @@
         <java.version>25</java.version>
         <javajwt.version>4.4.0</javajwt.version>
         <json.version>20231013</json.version>
+        <start-class>br.com.ednei.userjwt.UserJwtApplication</start-class>
     </properties>
     <dependencies>
         <dependency>
@@ -125,6 +126,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <mainClass>${start-class}</mainClass>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
