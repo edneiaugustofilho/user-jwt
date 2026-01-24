@@ -12,4 +12,7 @@ public interface TenantRepository extends JpaRepository<Tenant, UUID> {
 
     @Query("SELECT t FROM Tenant t JOIN t.users u WHERE u.id = :userId AND t.status = 'ACTIVE'")
     Optional<List<Tenant>> findAllByUserId(UUID userId);
+
+    @Query("SELECT t FROM Tenant t WHERE t.status = 'ACTIVE'")
+    Optional<List<Tenant>> findAllActiveTenants();
 }
