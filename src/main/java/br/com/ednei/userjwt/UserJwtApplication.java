@@ -22,6 +22,9 @@ public class UserJwtApplication {
     @Value("${spring.profiles.active}")
     private String activeProfile;
 
+    @Value("${server.port}")
+    private String port;
+
     static void main(String[] args) {
         SpringApplication.run(UserJwtApplication.class, args);
     }
@@ -38,11 +41,16 @@ public class UserJwtApplication {
         String labelPoweredBy = ConsoleLogUtil.formatar("Powered by", ConsoleLogUtil.Cor.AMARELO, ConsoleLogUtil.Estilo.NEGRITO);
         String formatarPoweredBy = ConsoleLogUtil.formatar("%s", ConsoleLogUtil.Cor.VERDE);
 
+        String listeningPort = ConsoleLogUtil.formatar("Listening to port: ", ConsoleLogUtil.Cor.AMARELO, ConsoleLogUtil.Estilo.NEGRITO);
+        String formatarListeningPort = ConsoleLogUtil.formatar("%s", ConsoleLogUtil.Cor.VERMELHO);
+
         String banner =
                 ":: " + labelName + " " + formatarName + " ::\n" +
                         ":: " + labelVersao + " " + formatarVersao + " ::\n" +
                         ":: " + labelProfile + " " + formatarProfile + " ::\n" +
-                        ":: " + labelPoweredBy + " " + formatarPoweredBy + " ::\n";
+                        ":: " + labelPoweredBy + " " + formatarPoweredBy + " ::\n"+
+                        ":: " + listeningPort + " " + formatarListeningPort + " ::\n"
+                ;
 
         System.out.printf((banner) + "%n", applicationName, versao, activeProfile, companyName);
     }
